@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>County Watch — The Weber County Hive</title>
+<meta name="description" content="A county-by-county guide to official government resources and Weber County Hive coverage across Utah.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1E2E27;
+    --bg-deep:#16221C;
+    --paper:#EDE6D6;
+    --paper-2:#E4DCC7;
+    --ink:#2B2A22;
+    --ink-dim:#5C5A4C;
+    --contour:#4F7A63;
+    --contour-soft:rgba(143,183,158,0.14);
+    --clay:#C9862F;
+    --clay-dim:#9C6B27;
+    --dim:#9FB3A6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--paper);
+    font-family:'Inter', Arial, sans-serif;
+    line-height:1.55;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  /* contour-line texture, drawn once behind the whole page */
+  .contours{
+    position:fixed;inset:0;z-index:0;pointer-events:none;
+    opacity:0.5;
+  }
+
+  header, main, footer{position:relative;z-index:1;}
+
+  header.masthead{
+    border-bottom:2px solid var(--clay-dim);
+    background:linear-gradient(180deg, var(--bg-deep), var(--bg));
+  }
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;letter-spacing:1px;color:var(--dim);
+    border-bottom:1px solid rgba(143,183,158,0.15);
+  }
+  .topbar a{text-decoration:none;color:var(--dim);}
+  .topbar a:hover{color:var(--clay);}
+
+  .masthead-inner{padding:52px 0 40px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;font-size:12px;letter-spacing:3px;
+    color:var(--clay);text-transform:uppercase;margin-bottom:14px;
+  }
+  h1{
+    font-family:'Bitter', Georgia, serif;font-weight:800;
+    font-size:44px;line-height:1.1;margin:0 0 14px;color:var(--paper);
+  }
+  .dek{font-size:16.5px;color:var(--dim);max-width:600px;margin:0;}
+
+  main{padding:48px 0 90px;}
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;font-size:12px;letter-spacing:2px;
+    color:var(--clay);text-transform:uppercase;margin-bottom:22px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .section-label::after{content:"";flex:1;height:1px;background:rgba(143,183,158,0.25);}
+
+  .about{
+    border:1px solid var(--contour);
+    background:rgba(79,122,99,0.08);
+    padding:22px 26px;margin-bottom:44px;
+    font-size:14.5px;color:var(--paper);
+  }
+  .about p{margin:0;}
+
+  .county-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(320px, 1fr));
+    gap:20px;
+  }
+
+  .county-card{
+    background:var(--paper);
+    color:var(--ink);
+    border:1px solid var(--paper-2);
+    border-radius:2px;
+    padding:0;
+    position:relative;
+    overflow:hidden;
+  }
+  .county-card::before{
+    /* dashed pin leader, top-left corner, map-legend feel */
+    content:"";
+    position:absolute;top:0;left:24px;
+    width:1px;height:16px;
+    background:repeating-linear-gradient(to bottom, var(--clay) 0 3px, transparent 3px 6px);
+  }
+  .card-head{
+    padding:22px 24px 14px;
+    border-bottom:1px dashed rgba(43,42,34,0.2);
+  }
+  .pin{
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:'IBM Plex Mono', monospace;font-size:10.5px;letter-spacing:1px;
+    color:var(--clay-dim);text-transform:uppercase;margin-bottom:8px;
+  }
+  .pin svg{width:11px;height:11px;fill:var(--clay);}
+  .county-card h2{
+    font-family:'Bitter', Georgia, serif;font-weight:800;font-size:22px;
+    margin:0 0 6px;color:var(--ink);
+  }
+  .meta{
+    font-family:'IBM Plex Mono', monospace;font-size:11px;color:var(--ink-dim);
+    letter-spacing:0.5px;
+  }
+
+  .card-links{
+    padding:16px 24px;
+    display:flex;flex-direction:column;gap:8px;
+    border-bottom:1px dashed rgba(43,42,34,0.2);
+  }
+  .card-links a{
+    display:flex;align-items:center;gap:8px;
+    font-size:13.5px;font-weight:600;text-decoration:none;
+    color:var(--ink);
+  }
+  .card-links a:hover{color:var(--clay-dim);}
+  .card-links a::before{content:"→";color:var(--clay);font-weight:700;}
+
+  .card-coverage{
+    padding:16px 24px 22px;
+  }
+  .coverage-label{
+    font-family:'IBM Plex Mono', monospace;font-size:10.5px;letter-spacing:1.5px;
+    text-transform:uppercase;color:var(--ink-dim);margin-bottom:10px;
+  }
+  .coverage-list{list-style:none;margin:0;padding:0;}
+  .coverage-list li{margin-bottom:8px;}
+  .coverage-list a{
+    font-size:13.5px;color:var(--ink);text-decoration:underline;
+    text-decoration-color:rgba(43,42,34,0.3);
+    text-underline-offset:2px;
+  }
+  .coverage-list a:hover{color:var(--clay-dim);text-decoration-color:var(--clay);}
+  .no-coverage{
+    font-size:12.5px;color:var(--ink-dim);font-style:italic;
+  }
+
+  footer{
+    border-top:2px solid var(--clay-dim);padding:32px 0;
+    font-family:'IBM Plex Mono', monospace;font-size:11.5px;color:var(--dim);
+    text-align:center;
+  }
+  footer a{text-decoration:underline;}
+  footer a:hover{color:var(--clay);}
+</style>
+</head>
+<body>
+
+<svg class="contours" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="topo" width="220" height="220" patternUnits="userSpaceOnUse">
+      <path d="M0,110 Q55,60 110,110 T220,110" fill="none" stroke="#4F7A63" stroke-width="1" opacity="0.35"/>
+      <path d="M0,150 Q55,100 110,150 T220,150" fill="none" stroke="#4F7A63" stroke-width="1" opacity="0.25"/>
+      <path d="M0,70 Q55,20 110,70 T220,70" fill="none" stroke="#4F7A63" stroke-width="1" opacity="0.2"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#topo)"/>
+</svg>
+
+<header class="masthead">
+  <div class="wrap topbar">
+    <a href="https://weber-county-hive.github.io/-weber-county-hive-index/">← Master Index</a>
+    <span>THE WEBER COUNTY HIVE / COUNTY WATCH</span>
+  </div>
+  <div class="wrap masthead-inner">
+    <div class="eyebrow">Resource guide</div>
+    <h1>County Watch</h1>
+    <p class="dek">Official government resources for each county, plus what The Weber County Hive has actually found there — one place to start, wherever you live.</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="about">
+      <p><strong>What's on each card:</strong> a direct link to the county's official website — from there you can find meeting agendas, public records requests, and everything else the county itself publishes. Below that, a short list of Weber County Hive coverage relevant to that county, if we've published anything there yet.</p>
+    </div>
+
+    <div class="section-label">Counties</div>
+    <div class="county-grid" id="grid"></div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    THE WEBER COUNTY HIVE — INDEPENDENT ACCOUNTABILITY JOURNALISM<br>
+    <a href="https://webercountyhive.substack.com">webercountyhive.substack.com</a> ·
+    <a href="https://weber-county-hive.github.io/-weber-county-hive-index/">Master Index</a>
+  </div>
+</footer>
+
+<script src="weber-hive-countywatch-data.js?v=1"></script>
+<script>
+  const pinSvg = `<svg viewBox="0 0 24 24"><path d="M12 0C7 0 3 4 3 9c0 6.5 9 15 9 15s9-8.5 9-15c0-5-4-9-9-9zm0 12a3 3 0 110-6 3 3 0 010 6z"/></svg>`;
+
+  const grid = document.getElementById('grid');
+  COUNTIES.forEach(c => {
+    const card = document.createElement('div');
+    card.className = 'county-card';
+
+    const coverageHtml = c.coverage && c.coverage.length
+      ? `<ul class="coverage-list">${c.coverage.map(item => `<li><a href="${item.url}" target="_blank" rel="noopener">${item.title}</a></li>`).join('')}</ul>`
+      : `<div class="no-coverage">No case files yet — check back.</div>`;
+
+    card.innerHTML = `
+      <div class="card-head">
+        <div class="pin">${pinSvg} ${c.region}</div>
+        <h2>${c.name}</h2>
+        <div class="meta">SEAT: ${c.seat.toUpperCase()}</div>
+      </div>
+      <div class="card-links">
+        <a href="${c.official}" target="_blank" rel="noopener">Visit official county website</a>
+      </div>
+      <div class="card-coverage">
+        <div class="coverage-label">On our radar</div>
+        ${coverageHtml}
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+
+</body>
+</html>
