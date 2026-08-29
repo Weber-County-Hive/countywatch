@@ -140,6 +140,66 @@
   .sources{font-family:'IBM Plex Mono', monospace;font-size:12px;color:var(--dim);border-top:1px solid var(--contour);padding-top:16px;margin-top:20px;}
   .sources li{font-size:12px;}
 
+  /* --- Start Here: plain-language glossary flip cards --- */
+  .primer-hint{
+    font-family:'IBM Plex Mono', monospace;font-size:11.5px;color:var(--dim);
+    margin:0 0 16px;
+  }
+  .primer-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:12px;
+  }
+  .flip-card{
+    height:170px;
+    perspective:1200px;
+    cursor:pointer;
+  }
+  .flip-card:focus-visible{outline:2px solid var(--clay);outline-offset:3px;}
+  .flip-inner{
+    position:relative;width:100%;height:100%;
+    transition:transform .5s cubic-bezier(.4,.2,.2,1);
+    transform-style:preserve-3d;
+  }
+  .flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+  .flip-face{
+    position:absolute;inset:0;
+    backface-visibility:hidden;
+    border:1px solid var(--contour);
+    background:var(--paper);
+    color:var(--ink);
+    padding:16px;
+    display:flex;flex-direction:column;
+    overflow-y:auto;
+  }
+  .flip-front{justify-content:space-between;}
+  .flip-front h3{
+    font-family:'Bitter', Georgia, serif;font-weight:800;font-size:16px;
+    color:var(--ink);margin:0;
+  }
+  .flip-front .flip-mark{
+    font-family:'IBM Plex Mono', monospace;font-size:10px;color:var(--clay-dim);
+    letter-spacing:1px;
+  }
+  .flip-front .flip-tap{
+    font-family:'IBM Plex Mono', monospace;font-size:9.5px;color:var(--ink-dim);
+    text-transform:uppercase;letter-spacing:1px;
+  }
+  .flip-back{
+    transform:rotateY(180deg);
+    justify-content:flex-start;
+    background:var(--paper-2);
+    border-color:var(--clay);
+  }
+  .flip-back p{font-size:12px;color:var(--ink);margin:0;line-height:1.5;}
+  @media (max-width:720px){
+    .primer-grid{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media (max-width:420px){
+    .primer-grid{grid-template-columns:1fr;}
+    .flip-card{height:150px;}
+  }
+
   footer{border-top:2px solid var(--clay-dim);padding:32px 0;font-family:'IBM Plex Mono', monospace;font-size:11.5px;color:var(--dim);text-align:center;}
   footer a{text-decoration:underline;}
   footer a:hover{color:var(--clay);}
@@ -174,9 +234,137 @@
 <main>
   <div class="wrap">
 
+    <section id="glossary">
+      <div class="section-label">Start here</div>
+      <p class="primer-hint">This page uses a lot of acronyms. Tap a card to flip it →</p>
+      <div class="primer-grid">
+
+        <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="CRA — tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="flip-mark">01</span>
+              <h3>CRA</h3>
+              <span class="flip-tap">↻ Tap</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p><strong>Community Reinvestment Area.</strong> A zone a city draws around a property so it can capture the growth in property tax that new development creates there, instead of that growth going to the county, school district, etc. like normal.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="PID — tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="flip-mark">02</span>
+              <h3>PID</h3>
+              <span class="flip-tap">↻ Tap</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p><strong>Public Infrastructure District.</strong> A separate mini-government, created just for one project, that borrows money (a bond) to build roads/sewer/etc. and pays it back using the CRA's redirected tax money.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="RDA — tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="flip-mark">03</span>
+              <h3>RDA</h3>
+              <span class="flip-tap">↻ Tap</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p><strong>Redevelopment Agency.</strong> The city body — usually the same Mayor and Council, just wearing a different legal hat — that actually creates the CRA and collects the redirected tax money on the city's behalf.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Tax Increment / TIF — tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="flip-mark">04</span>
+              <h3>Tax Increment (TIF)</h3>
+              <span class="flip-tap">↻ Tap</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>The <em>growth</em> in property tax value above a fixed starting point (the "base"). Only this growth gets redirected — everyone still collects full tax on the base value the whole time.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Base taxable value — tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="flip-mark">05</span>
+              <h3>Base Taxable Value</h3>
+              <span class="flip-tap">↻ Tap</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>The property's value on record the year the CRA is created — the starting line. Tax on this amount always keeps flowing normally to the county, school district, etc.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Bond & Trustee — tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="flip-mark">06</span>
+              <h3>Bond &amp; Trustee</h3>
+              <span class="flip-tap">↻ Tap</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>A <strong>bond</strong> is the loan the PID takes out to build infrastructure. A <strong>trustee</strong> is a board member who governs the PID and decides how that money gets spent.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Interlocal Agreement — tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="flip-mark">07</span>
+              <h3>Interlocal Agreement</h3>
+              <span class="flip-tap">↻ Tap</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>The actual contract between two government bodies — here, between the RDA and each taxing entity (or the RDA and the PID) — spelling out exactly how much money moves, and for how long.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="NPV — tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="flip-mark">08</span>
+              <h3>NPV</h3>
+              <span class="flip-tap">↻ Tap</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p><strong>Net Present Value.</strong> A dollar promised 20 years from now is worth less than a dollar today. NPV converts a long list of future payments into what they're actually worth in today's money.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card" tabindex="0" role="button" aria-pressed="false" aria-label="Lease Revenue Bond — tap to flip">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <span class="flip-mark">09</span>
+              <h3>Lease Revenue Bond</h3>
+              <span class="flip-tap">↻ Tap</span>
+            </div>
+            <div class="flip-face flip-back">
+              <p>How a school board can borrow to build <strong>without a public vote</strong> — by creating a "Local Building Authority" (itself, wearing a second hat), which issues the bond and leases the building back to the district. A normal school bond requires voter approval; this doesn't.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <div class="jumpnav">
       <button data-scroll-to="costco">The Costco deal</button>
       <button data-scroll-to="money">Where the money goes</button>
+      <button data-scroll-to="citywide">The bigger picture</button>
+      <button data-scroll-to="schoolbonds">No-vote bonding</button>
+      <button data-scroll-to="countytax">County tax hike</button>
       <button data-scroll-to="terms">The exact terms</button>
       <button data-scroll-to="board">Who's in charge</button>
       <button data-scroll-to="shadowpoint">The gym rebate</button>
@@ -216,22 +404,98 @@
     <section id="money">
       <div class="section-label">Where the money goes</div>
       <h2 class="title">The per-entity split, from the Budget itself</h2>
-      <p class="lede">This is the exact dollar breakdown Syracuse published in its official public-hearing notice — not an estimate.</p>
+      <p class="lede">This is the exact dollar breakdown from Syracuse's official Project Area Budget (Zions Public Finance, July 2024) — not an estimate. NPV discounts the 25-year total to today's dollars at 6%, the same rate the Budget itself uses.</p>
 
       <table>
-        <tr><th>Taxing Entity</th><th>Committed</th></tr>
-        <tr><td>Davis School District</td><td class="num" style="color:var(--clay);font-weight:700;">$15,656,825</td></tr>
-        <tr><td class="dim">Syracuse City</td><td class="num dim">$4,371,743</td></tr>
-        <tr><td class="dim">Davis County (+ Multi-County Assessing, Library)</td><td class="num dim">$3,851,357</td></tr>
-        <tr><td class="dim">North Davis Sewer District</td><td class="num dim">$1,196,636</td></tr>
-        <tr><td class="dim">Weber Basin Water Conservancy District</td><td class="num dim">$502,788</td></tr>
-        <tr><td class="dim">Davis Mosquito Abatement District</td><td class="num dim">$246,366</td></tr>
-        <tr><td><strong>Total</strong></td><td class="num"><strong>$25,825,716</strong></td></tr>
+        <tr><th>Taxing Entity</th><th>Nominal, 25 yrs</th><th>NPV (today's $)</th></tr>
+        <tr><td>Davis School District</td><td class="num" style="color:var(--clay);font-weight:700;">$15,656,825</td><td class="num" style="color:var(--clay);font-weight:700;">$7,349,188</td></tr>
+        <tr><td class="dim">Syracuse City</td><td class="num dim">$4,371,743</td><td class="num dim">$2,052,061</td></tr>
+        <tr><td class="dim">Davis County (+ Multi-County Assessing, Library)</td><td class="num dim">$3,851,357</td><td class="num dim">$1,807,796</td></tr>
+        <tr><td class="dim">North Davis Sewer District</td><td class="num dim">$1,196,636</td><td class="num dim">$561,691</td></tr>
+        <tr><td class="dim">Weber Basin Water Conservancy District</td><td class="num dim">$502,788</td><td class="num dim">$236,005</td></tr>
+        <tr><td class="dim">Davis Mosquito Abatement District</td><td class="num dim">$246,366</td><td class="num dim">$115,642</td></tr>
+        <tr><td><strong>Total</strong></td><td class="num"><strong>$25,825,716</strong></td><td class="num"><strong>$12,122,384</strong></td></tr>
       </table>
 
       <div class="flag-box">
         <div class="flag-label">Worth sitting with</div>
-        <p>Davis School District's individual share — $15.66M — is close to the entire $15M cap the CRA has agreed to pay the PID toward Costco's bond. The school district alone is carrying nearly the whole infrastructure bill, even before Syracuse City, Davis County, and the other three entities add theirs on top.</p>
+        <p>Davis School District's individual share — $15.66M nominal, $7.35M in today's dollars — is close to the entire $15M cap the CRA has agreed to pay the PID toward Costco's bond. The school district alone is carrying nearly the whole infrastructure bill, even before Syracuse City, Davis County, and the other three entities add theirs on top.</p>
+      </div>
+    </section>
+
+    <section id="citywide">
+      <div class="section-label">The bigger picture</div>
+      <h2 class="title">This isn't Syracuse's only tax-increment zone — it's the fifth</h2>
+      <p class="lede">The Project Area Budget itself discloses the city's full active TIF footprint, not just this one deal.</p>
+
+      <table>
+        <tr><th>Existing Project Area</th><th>Incremental value already diverted</th></tr>
+        <tr><td class="dim">Syracuse 750 West RDA</td><td class="num dim">$42,876,135</td></tr>
+        <tr><td class="dim">Syracuse Town Center (1700 South) RDA</td><td class="num dim">$24,904,633</td></tr>
+        <tr><td class="dim">Syracuse SR 193 EDA</td><td class="num dim">$100,609,221</td></tr>
+        <tr><td class="dim">Syracuse Antelope Drive CDA (Shadow Point / EOS gym)</td><td class="num dim">$50,628,100</td></tr>
+        <tr><td><strong>Total, before WDC Gateway is even added</strong></td><td class="num"><strong>$219,018,089</strong></td></tr>
+      </table>
+
+      <div class="flag-box">
+        <div class="flag-label">A pattern, not a one-off</div>
+        <p>At the combined tax rate this same Budget documents (1.0273%), that $219M in already-diverted incremental value works out to roughly <strong>$2.25 million a year</strong> kept out of the county, school district, and other taxing entities' reach — across four zones that predate WDC Gateway. Add WDC Gateway's own hundreds of millions in projected value and this is at least five overlapping tax-increment districts running simultaneously in one small city.</p>
+      </div>
+
+      <div class="card">
+        <div class="meta">ADMINISTRATIVE COSTS, PER THE BUDGET</div>
+        <h3>Who gets paid to run this</h3>
+        <p>3% of increment is set aside for Syracuse's own administrative costs — an estimated <strong>~$775,000</strong> to the city over 25 years. Davis County requires the same percentage be paid to it based on the County's own contribution — an estimated <strong>~$87,000</strong> to Davis County over the same period.</p>
+      </div>
+    </section>
+
+    <section id="schoolbonds">
+      <div class="section-label">Where the district turns instead</div>
+      <h2 class="title">Davis School District already borrows without a vote</h2>
+      <p class="lede">Not because of this deal specifically — but the same underlying pressure (growth outpacing revenue) shows up in both places.</p>
+
+      <div class="card">
+        <div class="meta">STANDARD-EXAMINER, MAY 2022</div>
+        <h3>$40 million, West Point Elementary, no public vote</h3>
+        <p>The school board — acting as the district's own Local Building Authority — approved a $40M lease revenue bond to relieve overcrowding at West Point Elementary. District spokesperson Christopher Williams confirmed it was <strong>the first time the district had ever used this mechanism.</strong> A normal school bond needs voter approval; this route only needs a board vote and a public hearing, unless residents petition to force a ballot question.</p>
+      </div>
+
+      <div class="flag-box">
+        <div class="flag-label">The cap is gone now, too</div>
+        <p>Utah used to limit lease revenue bonds to $200 million combined per any 3-year period without a vote. S.B. 188 (2025) removed that cap for reorganized districts. The first to use the expanded authority: Alpine School District, approving up to $238M for two schools and bringing $201M to market days later. Those bonds run up to 31 years. A comparable Davis-area example, North Summit School District, sought up to $125 million this way in December 2025 — its own public notice disclosing that the project's original bond had already been <strong>rejected by voters</strong>, and that lease revenue bonds generally cost more in interest than the voter-approved kind.</p>
+      </div>
+
+      <div class="flag-box">
+        <div class="flag-label">Two ends of the same pipe</div>
+        <p>This isn't a claim that the WDC Gateway CRA caused the 2022 West Point bond — it predates the CRA by two years. It's a structural point: the same district now giving up $15.66M in future growth to this one CRA has a documented history of turning to no-vote financing specifically when growth outpaces its ordinary revenue. Davis still uses traditional voter-approved bonds for its largest asks (a $475M bond in 2022, $298M in 2015) — but when a smaller, faster need shows up, the no-vote tool is the one on record getting used.</p>
+      </div>
+    </section>
+
+    <section id="countytax">
+      <div class="section-label">Meanwhile, county-wide</div>
+      <h2 class="title">Davis County just raised taxes for the first time in nine years</h2>
+      <p class="lede">The county's own stated reason for the hike is, almost word for word, the mechanism this whole page has been walking through.</p>
+
+      <div class="card">
+        <div class="meta">DEC. 2, 2025 — FIRST INCREASE SINCE 2016</div>
+        <h3>14.9%, after a proposed 30%</h3>
+        <p>Commissioners proposed up to a 30% property tax hike in October 2025 ($12.68M). After a Truth in Taxation hearing, the Commission voted <strong>2-1</strong> (Kamalu and Stevenson yes, Crofts dissenting) for a lower <strong>14.9%</strong> increase instead — about <strong>$6 million</strong>, roughly $4/month on the average home. It was the county's first tax increase since 2016.</p>
+      </div>
+
+      <div class="flag-box">
+        <div class="flag-label">The county's own words</div>
+        <p>From Davis County's own Truth in Taxation materials: <em>"Counties in Utah do not receive more property tax revenue simply because property values rise. Revenue changes only when the certified tax rate is adjusted."</em> And separately: <em>"Costs have grown nearly twice as fast as revenue."</em> That's the county stating, in its own words, that ordinary growth wasn't generating enough new tax revenue to keep pace with what growth costs.</p>
+      </div>
+
+      <div class="flag-box">
+        <div class="flag-label">A juxtaposition, not a proven cause</div>
+        <p>Nothing in the county's public materials names WDC Gateway or any specific CRA as a reason for the increase — that link isn't documented and shouldn't be overstated. What is documented: the county cited a structural gap between revenue and costs as its reason for the first tax hike in nine years, in the same window that Syracuse alone was running <strong>five simultaneous tax-increment zones</strong> worth <strong>$219 million+</strong> in diverted incremental value (see "The bigger picture," above). Every dollar of new growth walled off in a CRA is a dollar that doesn't show up in the county's own rate calculation — worth knowing, even without a document that draws the line explicitly.</p>
+      </div>
+
+      <div class="card">
+        <div class="meta">ONE MORE THING WORTH KNOWING</div>
+        <h3>No UIPA project area in Davis County — at least not yet</h3>
+        <p>Utah's Inland Port Authority now runs 16 project areas statewide — Salt Lake, Weber, Box Elder, Tooele (two), Iron, six rural counties via the Agri-Park, Sanpete/Sevier/Wayne, San Juan, Duchesne, and Washington City. Davis County isn't among them. Whatever is happening to Davis County's tax base is happening through ordinary city-level CRAs like this one — plural — not through the state's inland-port apparatus.</p>
       </div>
     </section>
 
@@ -243,7 +507,7 @@
       <table>
         <tr><th>Term</th><th>Detail</th></tr>
         <tr><td class="dim">Capture rate</td><td>50% of the increment — not the full amount. "Tax Increment" is defined as half the difference between current and base taxable value.</td></tr>
-        <tr><td class="dim">Base taxable value</td><td><strong>$505,538</strong> — the site's value as of the year ending Dec. 31, 2023, before any of this.</td></tr>
+        <tr><td class="dim">Base taxable value</td><td><strong>$505,358</strong> — the site's value as of year-end 2023, before any of this. (Confirmed twice in the official Project Area Budget, July 2024.)</td></tr>
         <tr><td class="dim">Projected tax base after development</td><td><strong>~$198 million</strong> increase, per the CRA Plan — the number the 50% capture rate gets applied against.</td></tr>
         <tr><td class="dim">Off the top</td><td>Of that 50%: 3% to the City for admin, 3% to the County for admin, 10% set aside for affordable housing, and 3% (capped at $500,000) to the Agency for landscaping and public art — before anything reaches the bond.</td></tr>
         <tr><td class="dim">Payment Period ends at the <em>earliest</em> of:</td><td>(a) 25 years, (b) $15,000,000 paid to the District, or (c) whatever pays off the bond's principal and interest.</td></tr>
@@ -347,10 +611,13 @@
         <div class="tl-item flag"><div class="tl-date">2025-04-08</div><div class="tl-text">RDA approves the PID/CRA interlocal agreement (Carver dissenting) — clearing the way for the bond sale — then unanimously denies Shadow Point's request to excuse the pool and footing shortfalls</div></div>
       </div>
 
-      <div class="sources">
-        <strong style="color:var(--clay);">SOURCES</strong>
-        <ul>
+      <details>
+        <summary style="color:var(--clay);font-weight:bold;">SOURCES (tap to expand)</summary>
+        <ul style="margin-top:14px;">
           <li>Syracuse WDC Gateway CRA Project Area Plan, Zions Public Finance, July 2024</li>
+          <li>Syracuse WDC Gateway CRA Project Area Budget, Zions Public Finance, July 2024 (syracuseut.gov/162/Planning)</li>
+          <li>"Davis school officials plan $40M bond," Standard-Examiner, May 19, 2022</li>
+          <li>Notice of Intent to Issue Lease Revenue Bonds, North Summit School District, Dec. 3, 2025 (utah.gov/pmn/files/1351387.pdf)</li>
           <li>Syracuse RDA public hearing notice, Aug. 13, 2024 (utah.gov/pmn/files/1145362.pdf)</li>
           <li>Interlocal Tax Sharing Agreement, Gateway PID No. 1 &amp; Syracuse RDA, dated March 18, 2025 (draft, RDA agenda packet)</li>
           <li>Resolution R24-31 &amp; Governing Document, Gateway Public Infrastructure District No. 1, Aug. 13, 2024 (utah.gov/pmn/files/1155837.pdf)</li>
@@ -361,8 +628,11 @@
           <li>First Amendment to Agreement for Tax Increment Rebate, Shadow Point LLC, April 9, 2024</li>
           <li>Syracuse Planning Commission minutes, April 1, 2025</li>
           <li>Utah Tax Commission Davis County entity nomenclature list (files.tax.utah.gov)</li>
+          <li>Davis County Truth in Taxation materials (daviscountyutah.gov/truth-in-taxation)</li>
+          <li>"Davis County Commission OKs 14.9% property tax increase," KSL/Deseret News/ABC4, Dec. 3, 2025</li>
+          <li>Utah Inland Port Authority project area list (inlandportauthority.utah.gov), pulled Aug. 2026</li>
         </ul>
-      </div>
+      </details>
     </section>
 
   </div>
@@ -378,6 +648,18 @@
 </footer>
 
 <script>
+  // glossary flip-cards — click/tap or keyboard (Enter/Space) toggles the flip
+  document.querySelectorAll('.flip-card').forEach(card => {
+    const toggle = () => {
+      const flipped = card.classList.toggle('flipped');
+      card.setAttribute('aria-pressed', flipped ? 'true' : 'false');
+    };
+    card.addEventListener('click', toggle);
+    card.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+  });
+
   document.querySelectorAll('[data-scroll-to]').forEach(btn => {
     btn.addEventListener('click', () => {
       const target = document.getElementById(btn.getAttribute('data-scroll-to'));
