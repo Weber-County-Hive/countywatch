@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Davis County: Two Deals to Watch — County Watch — The Weber County Hive</title>
+<meta name="description" content="A Costco-anchored PID/CRA financing deal, and an under-delivered gym rebate — two Davis County tax-increment stories worth watching.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitter:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#1E2E27;
+    --bg-deep:#16221C;
+    --paper:#EDE6D6;
+    --paper-2:#E4DCC7;
+    --ink:#2B2A22;
+    --ink-dim:#5C5A4C;
+    --contour:#4F7A63;
+    --clay:#C9862F;
+    --clay-dim:#9C6B27;
+    --dim:#9FB3A6;
+    --amber-flag:#C9862F;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--paper);
+    font-family:'Inter', Arial, sans-serif;
+    line-height:1.6;
+  }
+  a{color:inherit;}
+  .wrap{max-width:900px;margin:0 auto;padding:0 24px;}
+
+  .contours{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.4;}
+  header, main, footer{position:relative;z-index:1;}
+
+  header.masthead{
+    border-bottom:2px solid var(--clay-dim);
+    background:linear-gradient(180deg, var(--bg-deep), var(--bg));
+  }
+  .topbar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;letter-spacing:1px;color:var(--dim);
+    border-bottom:1px solid rgba(143,183,158,0.15);
+  }
+  .topbar a{text-decoration:none;color:var(--dim);}
+  .topbar a:hover{color:var(--clay);}
+
+  .masthead-inner{padding:48px 0 36px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;font-size:12px;letter-spacing:3px;
+    color:var(--clay);text-transform:uppercase;margin-bottom:14px;
+  }
+  h1{
+    font-family:'Bitter', Georgia, serif;font-weight:800;
+    font-size:36px;line-height:1.12;margin:0 0 14px;color:var(--paper);
+  }
+  .dek{font-size:16.5px;color:var(--dim);max-width:640px;margin:0 0 8px;}
+  .byline{font-family:'IBM Plex Mono', monospace;font-size:12px;color:var(--dim);margin-top:18px;}
+
+  main{padding:44px 0 90px;}
+  .jumpnav{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:48px;}
+  .jumpnav button{
+    font-family:'IBM Plex Mono', monospace;font-size:11.5px;
+    background:transparent;border:1px solid var(--contour);color:var(--dim);
+    padding:7px 12px;border-radius:2px;cursor:pointer;transition:all .15s ease;
+  }
+  .jumpnav button:hover{color:var(--clay);border-color:var(--clay);}
+
+  section{margin-bottom:60px;scroll-margin-top:20px;}
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;font-size:12px;letter-spacing:2px;
+    color:var(--clay);text-transform:uppercase;margin-bottom:20px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .section-label::after{content:"";flex:1;height:1px;background:rgba(143,183,158,0.25);}
+  h2.title{font-family:'Bitter', Georgia, serif;font-weight:800;font-size:26px;margin:0 0 16px;color:var(--paper);}
+  p{font-size:15.5px;margin:0 0 14px;}
+  .lede{font-size:16.5px;color:var(--dim);max-width:660px;}
+
+  /* card on paper, matches County Watch's card language */
+  .card{
+    background:var(--paper);color:var(--ink);
+    border:1px solid var(--paper-2);border-radius:2px;
+    padding:24px 26px;position:relative;overflow:hidden;margin-bottom:18px;
+  }
+  .card::before{
+    content:"";position:absolute;top:0;left:24px;width:1px;height:16px;
+    background:repeating-linear-gradient(to bottom, var(--clay) 0 3px, transparent 3px 6px);
+  }
+  .card h3{font-family:'Bitter', Georgia, serif;font-weight:800;font-size:18px;margin:0 0 8px;color:var(--ink);}
+  .card p{color:var(--ink);font-size:14.5px;}
+  .card .meta{font-family:'IBM Plex Mono', monospace;font-size:11px;color:var(--ink-dim);margin-bottom:6px;letter-spacing:0.5px;}
+
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin-bottom:8px;}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(143,183,158,0.2);vertical-align:top;}
+  th{font-family:'IBM Plex Mono', monospace;font-size:11px;letter-spacing:1px;color:var(--clay);text-transform:uppercase;}
+  td{color:var(--paper);}
+  td.dim{color:var(--dim);}
+  td.num{font-family:'IBM Plex Mono', monospace;}
+
+  .stat-row{display:flex;flex-wrap:wrap;gap:16px;margin:20px 0;}
+  .stat{
+    flex:1;min-width:150px;
+    border:1px solid var(--contour);background:rgba(79,122,99,0.08);
+    padding:18px 20px;
+  }
+  .stat .num{font-family:'Bitter', Georgia, serif;font-weight:800;font-size:26px;color:var(--paper);}
+  .stat .num.hi{color:var(--clay);}
+  .stat .label{font-family:'IBM Plex Mono', monospace;font-size:10.5px;color:var(--dim);margin-top:6px;letter-spacing:0.5px;}
+
+  .flag-box{
+    border:1px solid var(--amber-flag);background:rgba(201,134,47,0.08);
+    padding:18px 22px;margin:20px 0;
+  }
+  .flag-box .flag-label{
+    font-family:'IBM Plex Mono', monospace;font-size:11px;letter-spacing:1.5px;
+    color:var(--clay);text-transform:uppercase;margin-bottom:8px;
+  }
+  .flag-box p{color:var(--paper);font-size:14.5px;margin:0;}
+
+  .tl{border-left:2px solid var(--contour);padding-left:22px;margin-left:6px;}
+  .tl-item{position:relative;margin-bottom:22px;}
+  .tl-item::before{content:"";position:absolute;left:-28px;top:4px;width:9px;height:9px;border-radius:50%;background:var(--contour);border:2px solid var(--bg);}
+  .tl-item.flag::before{background:var(--clay);}
+  .tl-date{font-family:'IBM Plex Mono', monospace;font-size:12px;color:var(--clay);margin-bottom:4px;}
+  .tl-text{font-size:14.5px;color:var(--paper);}
+
+  details{border:1px solid var(--contour);background:rgba(22,34,28,0.4);padding:14px 18px;margin-bottom:12px;}
+  summary{font-family:'IBM Plex Mono', monospace;font-size:13px;color:var(--clay);cursor:pointer;}
+  details ul{margin-top:12px;}
+  li{color:var(--dim);font-size:14.5px;margin-bottom:8px;}
+  li strong{color:var(--paper);}
+
+  .sources{font-family:'IBM Plex Mono', monospace;font-size:12px;color:var(--dim);border-top:1px solid var(--contour);padding-top:16px;margin-top:20px;}
+  .sources li{font-size:12px;}
+
+  footer{border-top:2px solid var(--clay-dim);padding:32px 0;font-family:'IBM Plex Mono', monospace;font-size:11.5px;color:var(--dim);text-align:center;}
+  footer a{text-decoration:underline;}
+  footer a:hover{color:var(--clay);}
+</style>
+</head>
+<body>
+
+<svg class="contours" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="topo" width="220" height="220" patternUnits="userSpaceOnUse">
+      <path d="M0,110 Q55,60 110,110 T220,110" fill="none" stroke="#4F7A63" stroke-width="1" opacity="0.35"/>
+      <path d="M0,150 Q55,100 110,150 T220,150" fill="none" stroke="#4F7A63" stroke-width="1" opacity="0.25"/>
+      <path d="M0,70 Q55,20 110,70 T220,70" fill="none" stroke="#4F7A63" stroke-width="1" opacity="0.2"/>
+    </pattern>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#topo)"/>
+</svg>
+
+<header class="masthead">
+  <div class="wrap topbar">
+    <a href="index.html">← County Watch</a>
+    <span>ON OUR RADAR · DAVIS COUNTY</span>
+  </div>
+  <div class="wrap masthead-inner">
+    <div class="eyebrow">County Watch · Davis County</div>
+    <h1>Two Deals to Watch in Syracuse</h1>
+    <p class="dek">A Public Infrastructure District borrows against your school district to build Costco's parking lot. Meanwhile, a gym developer wants a bigger tax rebate after missing his own contract's specs.</p>
+    <div class="byline">The Weber County Hive · Updated Aug. 29, 2026</div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="jumpnav">
+      <button data-scroll-to="costco">The Costco deal</button>
+      <button data-scroll-to="money">Where the money goes</button>
+      <button data-scroll-to="terms">The exact terms</button>
+      <button data-scroll-to="shadowpoint">The gym rebate</button>
+      <button data-scroll-to="timeline">Timeline</button>
+    </div>
+
+    <section id="costco">
+      <div class="section-label">Deal one</div>
+      <h2 class="title">Syracuse WDC Gateway: Costco, a PID, and a CRA</h2>
+      <p class="lede">168.89 acres at Antelope Drive and 3000 West, right off the new West Davis Corridor exit. The City rezoned it, created a tax-increment district over it, and stood up a public infrastructure district specifically so Costco could build the roads.</p>
+
+      <div class="card">
+        <div class="meta">THE STRUCTURE</div>
+        <h3>Three entities, one project</h3>
+        <p><strong>Syracuse City Redevelopment Agency</strong> — created the Community Reinvestment Area (CRA), captures the tax increment.<br>
+        <strong>Gateway Public Infrastructure District No. 1</strong> — a separate political subdivision, incorporated Aug. 26, 2024, issues the bonds.<br>
+        <strong>Costco Wholesale Corporation and the D. Lawrence Cook Family Trust</strong> — jointly defined as "Developer" in the interlocal agreement. Costco requested the District's creation.</p>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat"><div class="num">18</div><div class="label">PARCELS, 168.89 ACRES</div></div>
+        <div class="stat"><div class="num hi">$8M</div><div class="label">BOND, SERIES 2025</div></div>
+        <div class="stat"><div class="num">$505,538</div><div class="label">BASE TAXABLE VALUE (2023)</div></div>
+        <div class="stat"><div class="num">$198M</div><div class="label">PROJECTED TAX BASE INCREASE</div></div>
+      </div>
+    </section>
+
+    <section id="money">
+      <div class="section-label">Where the money goes</div>
+      <h2 class="title">The per-entity split, from the Budget itself</h2>
+      <p class="lede">This is the exact dollar breakdown Syracuse published in its official public-hearing notice — not an estimate.</p>
+
+      <table>
+        <tr><th>Taxing Entity</th><th>Committed</th></tr>
+        <tr><td>Davis School District</td><td class="num" style="color:var(--clay);font-weight:700;">$15,656,825</td></tr>
+        <tr><td class="dim">Syracuse City</td><td class="num dim">$4,371,743</td></tr>
+        <tr><td class="dim">Davis County (+ Multi-County Assessing, Library)</td><td class="num dim">$3,851,357</td></tr>
+        <tr><td class="dim">North Davis Sewer District</td><td class="num dim">$1,196,636</td></tr>
+        <tr><td class="dim">Weber Basin Water Conservancy District</td><td class="num dim">$502,788</td></tr>
+        <tr><td class="dim">Davis Mosquito Abatement District</td><td class="num dim">$246,366</td></tr>
+        <tr><td><strong>Total</strong></td><td class="num"><strong>$25,825,716</strong></td></tr>
+      </table>
+
+      <div class="flag-box">
+        <div class="flag-label">Worth sitting with</div>
+        <p>Davis School District's individual share — $15.66M — is close to the entire $15M cap the CRA has agreed to pay the PID toward Costco's bond. The school district alone is carrying nearly the whole infrastructure bill, even before Syracuse City, Davis County, and the other three entities add theirs on top.</p>
+      </div>
+    </section>
+
+    <section id="terms">
+      <div class="section-label">The exact terms</div>
+      <h2 class="title">What the Interlocal Tax Sharing Agreement actually says</h2>
+      <p class="lede">Pulled directly from the draft agreement between the Redevelopment Agency and Gateway PID No. 1, dated March 18, 2025.</p>
+
+      <table>
+        <tr><th>Term</th><th>Detail</th></tr>
+        <tr><td class="dim">Capture rate</td><td>50% of the increment — not the full amount. "Tax Increment" is defined as half the difference between current and base taxable value.</td></tr>
+        <tr><td class="dim">Off the top</td><td>Of that 50%: 3% to the City for admin, 3% to the County for admin, 10% set aside for affordable housing, and 3% (capped at $500,000) to the Agency for landscaping and public art — before anything reaches the bond.</td></tr>
+        <tr><td class="dim">Payment Period ends at the <em>earliest</em> of:</td><td>(a) 25 years, (b) $15,000,000 paid to the District, or (c) whatever pays off the bond's principal and interest.</td></tr>
+        <tr><td class="dim">Eligible Public Improvements</td><td>West New Road A (1,300 ft), South New Road B (1,215 ft), a sanitary sewer extension, turn-lane striping, and right-of-way costs — capped at $6,320,132.</td></tr>
+        <tr><td class="dim">Agreement termination</td><td>Earlier of 1 year after the Payment Period ends, or 50 years from signing.</td></tr>
+      </table>
+
+      <details>
+        <summary>Why this matters: the real capture rate is lower than the headline numbers suggest</summary>
+        <ul>
+          <li>The $25.8M Budget figure and the 50%-of-increment definition aren't contradictory — the Budget number is a revenue <strong>ceiling</strong> across the district's full life; the 50% rate governs how fast the district actually gets there each year.</li>
+          <li>After the City/County admin cuts and the 10% housing set-aside, roughly 81% of that 50% slice — call it ~40.5% of the total increment — is what actually reaches the bond repayment in a given year.</li>
+          <li>None of this changes the Davis School District total above; the $15,656,825 figure already reflects the district's full negotiated share under its own separate interlocal agreement.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="shadowpoint">
+      <div class="section-label">Deal two — same city, unrelated</div>
+      <h2 class="title">A gym developer under-built the pool, then asked for a bigger rebate</h2>
+      <p class="lede">A separate, much older Davis County tax-increment story — not connected to Costco or the Gateway PID — surfaced in the same Syracuse RDA meeting records.</p>
+
+      <div class="card">
+        <div class="meta">THE DEAL</div>
+        <h3>Shadow Point, LLC — EOS Fitness gym</h3>
+        <p>Part of the Syracuse Antelope Drive CDA (created 2016). In 2020, the RDA agreed to rebate <strong>75%</strong> of the tax increment generated by a planned 40,000+ sq ft gym back to the developer, contingent on the facility meeting specific contractual requirements — including a 25-yard lap pool with three 8-foot lanes, a half-court basketball facility, saunas, a spa, and childcare space.</p>
+      </div>
+
+      <div class="flag-box">
+        <div class="flag-label">The compliance problem</div>
+        <p>City staff inspected the site and found: the pool as permitted is 66 feet (22 yards) long, not the contractually required 75 feet (25 yards) — 9 feet short — and its lanes are 7'4" wide, not the required 8'. Separately, the contract's Nov. 1, 2024 deadline for foundation footings to be complete was missed; staff found footings only about 50% poured on inspection.</p>
+      </div>
+
+      <p>In April 2024 — before either shortfall was discovered — the City had already amended the agreement once, raising the developer's rebate from <strong>75% to 100%</strong> of the tax increment. Per the City's own staff memo, that increase is worth an estimated <strong>$177,517 more to the developer over 15 years</strong> (2026–2041) than the original 75% rate would have paid. As of the April 2025 RDA agenda, the developer (Matthew Swain, Perry Commercial) was requesting the agreement be amended again to formally excuse both shortfalls rather than treat them as breach of contract.</p>
+    </section>
+
+    <section id="timeline">
+      <div class="section-label">Timeline</div>
+      <h2 class="title">Every date, in order</h2>
+      <div class="tl">
+        <div class="tl-item"><div class="tl-date">2016</div><div class="tl-text">Syracuse Antelope Drive CDA created (the older, separate district covering the Shadow Point/EOS gym site)</div></div>
+        <div class="tl-item"><div class="tl-date">2020-03-20</div><div class="tl-text">Original Shadow Point/EOS tax-increment rebate agreement signed — 75% rebate rate</div></div>
+        <div class="tl-item"><div class="tl-date">2024-04-09</div><div class="tl-text">Shadow Point agreement amended — rebate rate raised from 75% to 100%</div></div>
+        <div class="tl-item"><div class="tl-date">2024-06-14</div><div class="tl-text">Syracuse RDA designates the survey area enabling WDC Gateway CRA creation</div></div>
+        <div class="tl-item"><div class="tl-date">2024-07</div><div class="tl-text">WDC Gateway CRA Project Area Plan published (Zions Public Finance)</div></div>
+        <div class="tl-item"><div class="tl-date">2024-08-13</div><div class="tl-text">City Council/RDA adopt the WDC Gateway CRA Plan and Budget; authorize creation of Gateway PID No. 1</div></div>
+        <div class="tl-item"><div class="tl-date">2024-08-26</div><div class="tl-text">Lt. Governor's office issues certificate of incorporation for Gateway Public Infrastructure District No. 1</div></div>
+        <div class="tl-item flag"><div class="tl-date">2024-11-01</div><div class="tl-text">Shadow Point/EOS footing-completion deadline — missed, only ~50% poured per city inspection</div></div>
+        <div class="tl-item"><div class="tl-date">2025-02-25</div><div class="tl-text">Joint Council/RDA work session reviews draft Costco Development Agreement and draft PID/CRA Interlocal Tax Sharing Agreement</div></div>
+        <div class="tl-item"><div class="tl-date">2025-03-18</div><div class="tl-text">Interlocal Tax Sharing Agreement between Gateway PID No. 1 and the Syracuse RDA dated</div></div>
+        <div class="tl-item"><div class="tl-date">2025-04-01</div><div class="tl-text">Planning Commission hears public comment on Costco's building facade design</div></div>
+        <div class="tl-item flag"><div class="tl-date">2025-04-08</div><div class="tl-text">RDA considers final approval of the PID/CRA agreement; separately, Shadow Point requests a second amendment to excuse the pool and footing shortfalls</div></div>
+      </div>
+
+      <div class="sources">
+        <strong style="color:var(--clay);">SOURCES</strong>
+        <ul>
+          <li>Syracuse WDC Gateway CRA Project Area Plan, Zions Public Finance, July 2024</li>
+          <li>Syracuse RDA public hearing notice, Aug. 13, 2024 (utah.gov/pmn/files/1145362.pdf)</li>
+          <li>Interlocal Tax Sharing Agreement, Gateway PID No. 1 &amp; Syracuse RDA, dated March 18, 2025 (draft, RDA agenda packet)</li>
+          <li>RDA Agenda &amp; staff memo, April 8, 2025 (Shadow Point/EOS amendment request)</li>
+          <li>First Amendment to Agreement for Tax Increment Rebate, Shadow Point LLC, April 9, 2024</li>
+          <li>Syracuse Planning Commission minutes, April 1, 2025</li>
+          <li>Utah Tax Commission Davis County entity nomenclature list (files.tax.utah.gov)</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    THE WEBER COUNTY HIVE — INDEPENDENT ACCOUNTABILITY JOURNALISM<br>
+    <a href="index.html">County Watch</a> ·
+    <a href="https://weber-county-hive.github.io/-weber-county-hive-index/">Master Index</a> ·
+    <a href="https://webercountyhive.substack.com">Substack</a>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-scroll-to]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(btn.getAttribute('data-scroll-to'));
+      if (target) target.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+</script>
+
+</body>
+</html>

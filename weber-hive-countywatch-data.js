@@ -41,7 +41,9 @@ const COUNTIES = [
     seat: "Farmington",
     region: "Wasatch Front",
     official: "https://www.daviscountyutah.gov/",
-    coverage: [],
+    coverage: [
+      { title: "Two Deals to Watch in Syracuse: Costco/Gateway PID & the Shadow Point gym rebate", url: "weber-hive-countywatch-davis-syracuse.html" },
+    ],
   },
   {
     name: "Salt Lake County",
